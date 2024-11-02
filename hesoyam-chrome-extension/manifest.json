@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "hesoyam",
+    "description": "Create a better search sentence for your research on the internet.",
+    "version": "1.0",
+    "action":{
+        "default_popup" : "popup/popup.html"
+    },
+    "icons": {
+        "16": "images/icon_16.png",
+        "32": "images/icon_32.png",
+        "64": "images/icon_64.png",
+        "128": "images/icon_128.png"
+    },
+    "background":{
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "permissions":[
+        "storage"
+    ],
+    "content_security_policy": {
+    "extension_pages": "script-src 'self'"
+    }
+}

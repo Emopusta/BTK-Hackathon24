@@ -1,0 +1,66 @@
+.frame {
+  width: 300px;
+  height: 500px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.bottom-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-box {
+  flex: 1;
+  border: 2px solid black;
+  margin-bottom: 10px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.input-box{
+    width: 70%;
+    height: 40px;
+    border: 2px solid red;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.send-button {
+    width: 20%;
+    height: 40px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border: 2px solid blue;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.clear-button {
+  width: 20%;
+  height: 40px;
+  border: 2px solid red;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.user-message {
+  background-color: #d1e7dd;
+  text-align: right;
+  margin-left: auto;
+}
+
+.bot-message {
+  background-color: #f8d7da;
+  text-align: left;
+  margin-right: auto;
+}
