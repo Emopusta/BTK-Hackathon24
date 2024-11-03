@@ -1,4 +1,4 @@
-# BTK Hackathon 2024 - Hesoyam - Google Search Buddy
+# BTK Hackathon 2024 - Hesoyam - Search Buddy
 > Bu proje BTK Hackathon 2024 için Hesoyam ekibi tarafından geliştirilmiştir.
  
 ## Proje Amacı
@@ -27,7 +27,11 @@ Backend:
 
 1. cmd veya benzeri bir cli kullanarak **hesoyam-api** dosya dizinine gidiniz.
 2. `npm install` ile dependency'leri indiriniz.
-3. `npm run dev` ile backend'i ayağa kaldırınız.
+3. ardından .env adında bir dosya ekleyiniz.
+4. .example.env dosyası içerisindeki örneklerden yola çıkarak .env dosyanızın içini doldurunuz
+5. .example.env ile .env dosyasının aynı dizinde olduğundan emin olunuz.
+6. Config key ve valueların doğruluğundan emin olunuz.
+7. `npm run dev` ile backend'i ayağa kaldırınız.
 
 Chrome-Extension:
 
