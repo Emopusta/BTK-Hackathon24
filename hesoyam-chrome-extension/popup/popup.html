@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hesoyam</title>
+    <title>Hesoyam Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="./popup.css">
 </head>
 <body>
-    <div class="frame">    
+    <div class="frame">
+        <div class="header">
+            <span class="title">Sohbet</span>
+            <button class="clear-chat-button" id="clear-button"><i class="fa fa-sync-alt"></i> Sohbeti Temizle</button>
+        </div>
+        
         <div class="chat-box" id="chat-box">
+            <!-- Mesajlar buraya eklenecek -->
         </div>
 
         <div class="bottom-area">
-            <input type="text" class="input-area" id="input-area" placeholder="Type a message...">
-            <div class="send-button" id="send-button">Send</div>
-            <div class="clear-button" id="clear-button">Clear</div>
+            <input type="text" class="input-area" id="input-area" placeholder="Mesajınızı yazınız...">
+            <button class="send-button" id="send-button"><i class="fa fa-paper-plane"></i> Gönder</button>
         </div>
     </div>
 
