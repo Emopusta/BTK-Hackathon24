@@ -7,7 +7,8 @@ async function sendPrompt(prompt) {
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   const result = await model.generateContent(prompt);
-  return result;
+  const text = result.response.candidates[0].content.parts[0].text; 
+  return text;
 }
 
 export default function authService() {
