@@ -22,22 +22,35 @@ sendButton.onclick = async function () {
     console.error("Chat box element not found.");
     return;
   }
-  currentChat.push({ sender: "user", message: textInputElement.value });
-  pushDataToChatBox({ sender: "user", message: textInputElement.value });
 
-  const response = await sendPrompt(textInputElement.value);
-  const botResponse = { sender: "model", message: response.data.model.text };
-  currentChat.push(botResponse);
-  pushDataToChatBox(botResponse);
+  sendButton.classList.add("loading");
+  textInputElement.disabled = true; 
 
-  console.log(currentChat); 
-  const prefs = {
-    chat: currentChat,
-  };
-  chrome.runtime.sendMessage({ event: "onStart", prefs });
+  try {
+    currentChat.push({ sender: "user", message: textInputElement.value });
+    pushDataToChatBox({ sender: "user", message: textInputElement.value });
 
-  textInputElement.value = "";
+    const response = await sendPrompt(textInputElement.value);
+    const botResponse = { sender: "model", message: response.data.model.text };
+    currentChat.push(botResponse);
+    pushDataToChatBox(botResponse);
+
+    console.log(currentChat); 
+    const prefs = {
+      chat: currentChat,
+    };
+    chrome.runtime.sendMessage({ event: "onStart", prefs });
+
+    textInputElement.value = "";
+  } catch (error) {
+    console.error("Bir hata oluştu:", error);
+  } finally {
+    sendButton.classList.remove("loading");
+    textInputElement.disabled = false; 
+  }
 };
+
+
 
 function recreateChatBoxFromList(list) {
   if (list.length > 0) {

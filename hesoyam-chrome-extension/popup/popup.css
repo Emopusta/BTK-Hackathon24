@@ -97,6 +97,12 @@ body {
   transition: border-color 0.3s;
 }
 
+.input-area:disabled {
+  background-color: #2c2f33; 
+  color: #7a7a7a;            
+  cursor: not-allowed;
+}
+
 .input-area::placeholder {
   color: #b9bbbe;
 }
@@ -118,4 +124,52 @@ body {
 
 .send-button:hover {
   background-color: #5b6eae;
+}
+
+.chat-box::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+  background: #2c2f33; 
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background: #7289da; 
+  border-radius: 10px; 
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover {
+  background: #99aab5;
+}
+
+/* Yüklenme animasyonu için CSS */
+.loading {
+  pointer-events: none; /* Butona tekrar tıklanmasını engeller */
+  position: relative;
+  color: transparent; /* Buton metnini gizler */
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  transform: translate(-50%, -50%);
+}
+
+/* Dönen animasyon */
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
