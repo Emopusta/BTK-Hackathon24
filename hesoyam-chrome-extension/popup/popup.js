@@ -17,6 +17,18 @@ clearButton.onclick = function () {
   clearChat();
 };
 
+document.addEventListener("DOMContentLoaded", function () {
+  const textInputElement = document.getElementById("input-area");
+  const sendButton = document.getElementById("send-button");
+
+  textInputElement.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      sendButton.click();
+    }
+  });
+});
+
 sendButton.onclick = async function () {
   if (!chatBoxElement) {
     console.error("Chat box element not found.");

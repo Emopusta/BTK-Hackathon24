@@ -143,11 +143,10 @@ body {
   background: #99aab5;
 }
 
-/* Yüklenme animasyonu için CSS */
 .loading {
-  pointer-events: none; /* Butona tekrar tıklanmasını engeller */
+  pointer-events: none;
   position: relative;
-  color: transparent; /* Buton metnini gizler */
+  color: transparent; 
 }
 
 .loading::after {
@@ -164,7 +163,6 @@ body {
   transform: translate(-50%, -50%);
 }
 
-/* Dönen animasyon */
 @keyframes spin {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
