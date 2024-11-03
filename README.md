@@ -1,4 +1,4 @@
-# BTK Hackathon 2024 - Hesoyam - Google Search Buddy
+# BTK Hackathon 2024 - Hesoyam - Search Buddy
 > Bu proje BTK Hackathon 2024 için Hesoyam ekibi tarafından geliştirilmiştir.
  
 ## Proje Amacı
