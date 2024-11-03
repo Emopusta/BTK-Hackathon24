@@ -26,11 +26,11 @@ sendButton.onclick = async function () {
   pushDataToChatBox({ sender: "user", message: textInputElement.value });
 
   const response = await sendPrompt(textInputElement.value);
-  const botResponse = { sender: "bot", message: response.data.model.text };
+  const botResponse = { sender: "model", message: response.data.model.text };
   currentChat.push(botResponse);
   pushDataToChatBox(botResponse);
 
-  console.log(currentChat);
+  console.log(currentChat); 
   const prefs = {
     chat: currentChat,
   };
@@ -43,7 +43,7 @@ function recreateChatBoxFromList(list) {
   if (list.length > 0) {
     list.forEach((element) => {
       const p = document.createElement("p");
-      if (element.sender == "bot") {
+      if (element.sender == "model") {
         p.classList.add("bot-message");
       } else {
         p.classList.add("user-message");
@@ -56,7 +56,7 @@ function recreateChatBoxFromList(list) {
 
 function pushDataToChatBox(data) {
   const p = document.createElement("p");
-  if (data.sender == "bot") {
+  if (data.sender == "model") {
     p.classList.add("bot-message");
   } else {
     p.classList.add("user-message");
@@ -68,7 +68,7 @@ function pushDataToChatBox(data) {
 function clearChat() {
   const clearedChat = [];
   clearedChat.push({
-    sender: "bot",
+    sender: "model",
     message: "Merhaba, ne aramak istiyorsunuz?",
   });
 
@@ -82,20 +82,24 @@ function clearChat() {
   chrome.runtime.sendMessage({ event: "onStart", prefs });
 }
 
-
-
-
 const BASE_URL = "http://localhost:8000";
 
 async function sendPrompt(promptMessage) {
-  const data = { prompt: promptMessage };
+  const promptHistory = currentChat.map((data) => ({
+    role: data.sender,
+    parts: [{ text: data.message }],
+  }));
+
+  promptHistory.shift();
+  const data = { history: promptHistory, promptMessage: promptMessage };
+
   try {
     const response = await fetch(BASE_URL + "/api/Gemini/send-prompt", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
 
     const result = await response.json();
