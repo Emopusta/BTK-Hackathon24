@@ -62,31 +62,29 @@ sendButton.onclick = async function () {
   }
 };
 
-
-
 function recreateChatBoxFromList(list) {
   if (list.length > 0) {
     list.forEach((element) => {
-      const p = document.createElement("p");
+      let p = document.createElement("p");
       if (element.sender == "model") {
         p.classList.add("bot-message");
       } else {
         p.classList.add("user-message");
       }
-      p.textContent = element.message;
+      p.innerHTML = element.message;
       chatBoxElement.appendChild(p);
     });
   }
 }
 
 function pushDataToChatBox(data) {
-  const p = document.createElement("p");
+  let p = document.createElement("p");
   if (data.sender == "model") {
     p.classList.add("bot-message");
   } else {
     p.classList.add("user-message");
   }
-  p.textContent = data.message;
+  p.innerHTML = data.message;
   chatBoxElement.appendChild(p);
 }
 

@@ -21,7 +21,18 @@ async function sendPrompt(promptHistory, promptMessage) {
 
   const result = await chatSession.sendMessage(promptMessage);
   const text = result.response.text(); 
-  return text;
+  return convertToHtml(text);
+}
+
+function convertToHtml(text) {
+
+  let html = text.replace(/\n/g, '<br>');
+  html = html.replace(/\* \*\*(.*?)\*\*/g, '<li><strong>$1</strong>');
+  html = html.replace(/<\/li><br>/g, '</li>');
+  html = html.replace(/<li>/, '<ul><li>');
+  html = html.replace(/<\/li><br><br>/, '</li></ul><br>');
+
+  return html;
 }
 
 export default function authService() {
