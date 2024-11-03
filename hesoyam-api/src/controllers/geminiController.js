@@ -3,8 +3,8 @@ import GeminiResponseModel from "../models/geminiResponseModel.js";
 import successDataResult from "../utils/successDataResult.js";
 
 const sendPrompt = asyncHandler(async function (req, res){
-    const { prompt } = req.body
-    const response = await req.geminiService.sendPrompt(prompt);
+    const { history, promptMessage } = req.body
+    const response = await req.geminiService.sendPrompt(history, promptMessage);
 
     const model = { ...GeminiResponseModel };
     model.text = response;
