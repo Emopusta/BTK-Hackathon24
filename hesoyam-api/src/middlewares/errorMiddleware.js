@@ -4,8 +4,8 @@ async function errorMiddleware(err, req, res, next){
     return res.status(statusCode).json({
         data: null,
         error: {
-            Detail: message,
-            StatusCode: statusCode
+            detail: message,
+            statusCode: statusCode
         },
         success: false,
     });

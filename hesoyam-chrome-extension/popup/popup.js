@@ -36,29 +36,35 @@ sendButton.onclick = async function () {
   }
 
   sendButton.classList.add("loading");
-  textInputElement.disabled = true; 
+  textInputElement.disabled = true;
 
   try {
-    currentChat.push({ sender: "user", message: textInputElement.value });
-    pushDataToChatBox({ sender: "user", message: textInputElement.value });
-
     const response = await sendPrompt(textInputElement.value);
-    const botResponse = { sender: "model", message: response.data.model.text };
-    currentChat.push(botResponse);
-    pushDataToChatBox(botResponse);
 
-    console.log(currentChat); 
-    const prefs = {
-      chat: currentChat,
-    };
-    chrome.runtime.sendMessage({ event: "onStart", prefs });
+    if (response.success == false) {
+      alert(response.error.detail);
+    } else {
+      currentChat.push({ sender: "user", message: textInputElement.value });
+      pushDataToChatBox({ sender: "user", message: textInputElement.value });
+      const botResponse = {
+        sender: "model",
+        message: response.data.model.text,
+      };
+      currentChat.push(botResponse);
+      pushDataToChatBox(botResponse);
 
-    textInputElement.value = "";
+      const prefs = {
+        chat: currentChat,
+      };
+      chrome.runtime.sendMessage({ event: "onStart", prefs });
+
+      textInputElement.value = "";
+    }
   } catch (error) {
     console.error("Bir hata oluştu:", error);
   } finally {
     sendButton.classList.remove("loading");
-    textInputElement.disabled = false; 
+    textInputElement.disabled = false;
   }
 };
 
@@ -107,6 +113,7 @@ function clearChat() {
   chrome.runtime.sendMessage({ event: "onStart", prefs });
 }
 
+// TODO : Remove this fetch from here
 const BASE_URL = "http://localhost:8000";
 
 async function sendPrompt(promptMessage) {
