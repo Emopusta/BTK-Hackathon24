@@ -42,3 +42,6 @@ Chrome-Extension:
     - ![extension-pin](./public/extension-pin.png)
 6. Pinlenen logoya tıklayarak **Hesoyam Search Buddy** uzantımızın arayüzüne girip sorular sorabilirsiniz.
     - ![alt text](./public/search-buddy.png)
+
+## Demo
+[![Videoyu izleyin](public/demo_preview.png)](public/BTK-Hackathon24-Hesoyam.mp4)
