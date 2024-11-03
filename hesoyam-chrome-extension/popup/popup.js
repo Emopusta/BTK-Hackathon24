@@ -86,6 +86,8 @@ function pushDataToChatBox(data) {
   }
   p.innerHTML = data.message;
   chatBoxElement.appendChild(p);
+
+  chatBoxElement.scrollTop = chatBoxElement.scrollHeight;
 }
 
 function clearChat() {
