@@ -48,4 +48,4 @@ Chrome-Extension:
     - ![alt text](./public/search-buddy.png)
 
 ## Demo
-[![Videoyu izleyin](public/demo_preview.png)](public/BTK-Hackathon24-Hesoyam.mp4)
+[![Videoyu izleyin](public/demo_preview.png)](https://www.youtube.com/watch?v=udtZ8YwVQg4)
